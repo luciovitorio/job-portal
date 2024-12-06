@@ -31,12 +31,13 @@ const Login = () => {
         },
         withCredentials: true,
       });
-      if (res.date.success) {
+      if (res.data.success) {
         navigate("/");
         toast.success(res.data.message);
       }
     } catch (error) {
       console.log(error);
+      toast.success(error.response.data.message);
     }
   };
   return (
@@ -59,7 +60,7 @@ const Login = () => {
           <div className="my-2">
             <Label>Password</Label>
             <Input
-              type="text"
+              type="password"
               value={input.password}
               name="password"
               onChange={changeEventHandler}

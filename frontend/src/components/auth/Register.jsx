@@ -47,12 +47,13 @@ const Register = () => {
         },
         withCredentials: true,
       });
-      if (res.date.success) {
+      if (res.data.success) {
         navigate("/login");
         toast.success(res.data.message);
       }
     } catch (error) {
       console.log(error);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -85,7 +86,7 @@ const Register = () => {
           <div className="my-2">
             <Label>Password</Label>
             <Input
-              type="text"
+              type="password"
               value={input.password}
               name="password"
               onChange={changeEventHandler}
